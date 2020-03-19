@@ -1,0 +1,14 @@
+- name : generate system Report via gathering facts (machine Depandent)
+  hosts: dev
+  tasks:
+      - block: 
+          - name: push hardware report file into every system 
+            template:
+                    src: hwReports.j2
+                    dest: /tmp/hwReport
+        rescue:
+          - name: push hardware report file into every system if error occur
+            template:
+                    src: hwReports2.j2
+                    dest: /tmp/hwReport
+

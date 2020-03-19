@@ -1,0 +1,11 @@
+- hosts: dev
+  tasks:
+  copy:
+      src: /srv/myfiles/foo.conf
+      dest: /etc/foo.conf 
+      owner: foo
+      group: foo
+      mode: '0644'
+
+
+

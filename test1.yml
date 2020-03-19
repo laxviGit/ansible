@@ -1,0 +1,16 @@
+- hosts: dev
+  tasks:
+   - copy:
+          src: /etc/passwd
+          dest: /tmp
+          perm: 1660
+   - file:
+          path: /tmp/data
+          state: directory
+          owner: lv
+          group: wheel
+          perm: 1770
+   - service:
+           name: httpd
+          state: installed
+   

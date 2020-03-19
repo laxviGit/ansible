@@ -1,0 +1,10 @@
+- name: example of register variable
+  hosts: dev:!172.25.250.11
+  tasks:
+      - name: run command check service status
+        command: systemctl is_active crond
+        register: xyz
+
+      - debug:
+              msg: xyz
+        

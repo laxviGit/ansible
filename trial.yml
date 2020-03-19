@@ -1,0 +1,11 @@
+#- name: change ownership of the file chrony.conf 
+- file:
+    path: /tmp/data
+    state: directory
+    owner: lv 
+    group: lv
+    mode: '0644'
+
+
+
+

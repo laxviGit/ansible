@@ -1,0 +1,39 @@
+- name: example of for loop
+  hosts: dev
+  gather_facts: false
+  vars:
+          user:
+                 ram
+                 shayam
+                 naam
+          desc:
+                 teacher
+                 master
+                 labor
+  tasks:
+          - name: adding user
+            user:
+                    name: "{{ user }}"
+                    description: "{{ desc }}"
+                    state: present
+            
+          - name: check user presence
+            user:
+                    name: "{{ item }}"
+            with_items:
+                    - ravi
+                    - kavi
+                    - kaam
+            register: abc
+
+          - debug:
+                  msg: "{{ abc }}"
+
+          - name: removing user
+            user:
+                   name: "{{ user}}"
+                   state: absent
+                   remove: yes
+            when: abc.state== true
+
+

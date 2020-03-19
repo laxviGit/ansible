@@ -1,0 +1,30 @@
+---
+- hosts: dev
+  vars: 
+        user: raghav 
+        desig: HR
+  tasks:
+          - name: adding one user named "{{user}}"
+            user: 
+                name: "{{ user }}"
+                password: redhat
+                #uid: 1041
+                shell: /bin/bash 
+                group: wheel 
+                comment: "{{ desig }}" 
+                #generate_ssh_key: yes
+                #ssh_key_bits: 2048 
+                #ssh_key_file: .ssh/id_rsa
+          - name: Copy file with owner and permissions
+            copy: 
+                #src: /etc/ansible/ansible.cfg 
+                #dest: /home/+"{{user}}"+/.ansible.cfg 
+                owner: "{{user}}"
+                group: "{{ user}}"
+
+
+
+          - name: call second yml file here
+            import_tasks: /home/lv/second.yml
+
+

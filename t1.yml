@@ -1,0 +1,18 @@
+- hosts: dev 
+  tasks:
+   - name: copy password file to /tmp
+     copy:
+          src: /etc/passwd
+          dest: /tmp
+          perm: 1660
+   - name: make directory
+     file:
+          path: /tmp/data
+          state: directory
+          owner: lv
+          group: wheel
+          perm: 1770
+   - name: depoly crond service
+     service:
+          name: crond
+          state: restarted

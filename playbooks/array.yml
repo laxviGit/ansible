@@ -1,0 +1,21 @@
+---
+- name: few Tasks
+  hosts: dev
+  vars:
+      mypkg:
+         - ftp
+         - wget
+         - vsftpd
+      web: httpd
+  tasks:
+          - name: will install "{{ mypkg }}"
+            yum:
+               name: "{{ mypkg }}"
+               state: installed
+
+          - name: print the value
+            debug:
+               msg: "{{ mypkg }}"
+               
+
+

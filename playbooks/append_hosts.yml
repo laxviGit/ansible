@@ -1,0 +1,11 @@
+---
+# example of 
+- name: Example of fact use case
+  hosts: 172.25.250.9
+  tasks:
+     - name: append content 
+       lineinfile:
+            line: "{{ ansible_ens160.ipv4.address }} {{ ansible_fqdn }} {{ ansible_hostname }}"
+            dest: /etc/hosts1
+
+

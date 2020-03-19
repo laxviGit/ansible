@@ -1,0 +1,14 @@
+---
+- hosts: 172.25.250.9
+  vars:
+        user: poooo
+        desig: HR
+  tasks:
+  - name: Copy file with owner "{{ user }}" and permissions
+    copy:
+        src: /etc/ansible/ansible.cfg
+        dest: /home/{{user}}/.ansible.cfg
+        owner: "{{user}}"
+        group: "{{user}}"
+
+

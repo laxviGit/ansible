@@ -1,0 +1,24 @@
+---
+- nama: some tasks
+  hosts: dev
+  tasks: 
+        - name: Check httpd service 
+          stat: 
+           path: /etc/systemd/system/httpd
+          register: check_httpd
+       
+        - name: check
+          debug:
+                msg: "{{ check_httpd }}"
+
+        - name : Start a service
+          service:
+            name: httpd
+            state: started
+          register: abc
+          when: check_httpd.stat.exists
+
+        - name: check
+          debug: 
+                msg: "{{ abc }}"
+

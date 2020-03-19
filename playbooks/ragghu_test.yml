@@ -1,0 +1,29 @@
+---
+- hosts: 172.25.250.9
+  gather_facts: false
+  vars:
+        user: poooo 
+        desig: HR
+  tasks:
+          - name: adding one user named "{{user}}"
+            user:
+                name: "{{ user }}"
+                password: redhat
+                shell: /bin/bash
+                #group: "{{user}}" 
+                comment: "{{ desig }}"
+                generate_ssh_key: yes
+                ssh_key_bits: 1024 
+                ssh_key_file: .ssh/id_rsa
+          - name: Copy file with owner and permissions
+            copy:
+                src: /etc/ansible/ansible.cfg 
+                dest: /home/{{ user }}/.ansible.cfg 
+                owner: "{{user}}"
+                group: "{{ user}}"
+
+
+
+                #- name: call second yml file here
+                #import_tasks: /home/lv/playbooks/secondday.yml
+

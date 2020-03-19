@@ -1,0 +1,27 @@
+- name: web server deployment with jinja
+  hosts: dev
+  vars:
+          webroot: /var/www/html
+          web_conf: /etc/httpd/conf.d
+
+  tasks:
+          - name: install httpd service
+            yum:
+                    name: httpd
+                    state: installed
+          - name: copy website code into "{{ webroot }}"
+            copy:
+                 src: code/
+                 dest: "{{ webroot }}"
+          - name: push website.j2 config file for website
+            template:
+                    src: website.j2
+                    dest: "{{ web_conf }}/web.conf" #apache reads .conf files
+
+          - name: restart httpd service and enable it
+            service:
+                    name: httpd
+                    state: started
+                    enabled: true
+
+

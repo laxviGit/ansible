@@ -1,0 +1,9 @@
+---
+- name: Few task
+  hosts: 'dev: !172.25.250.11'
+  tasks:        
+     - name: store kernel version in /etc/motd
+       copy: 
+           content: " this is your Kerner version {{ ansible_kernel }}"
+           dest: /etc/modt
+

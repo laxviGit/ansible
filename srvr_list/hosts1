@@ -1,0 +1,22 @@
+[local]
+172.25.250.10	ansible_ssh_user=lv	ansible_ssh_pass=redhat
+172.25.250.11	ansible_ssh_user=geeta	ansible_ssh_pass=redhat
+172.25.250.9	
+
+
+
+#[aws]
+#18.188.152.205  ansible_ssh_user=ec2-user
+#13.58.50.39     ansible_ssh_user-ec2-user
+
+
+#[local:vars]
+#ansible_user=lv
+
+
+
+#[total:children]
+#dev
+#aws
+
+

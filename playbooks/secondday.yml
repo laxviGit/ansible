@@ -1,0 +1,10 @@
+---
+- name:
+  yum: 
+      name: ftp
+      state: installed
+- name: anything to add 
+  lineinfile: 
+      line: "added"
+      dest: /etc/sudoers
+

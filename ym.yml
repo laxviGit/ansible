@@ -1,0 +1,8 @@
+---
+ - hosts: dev
+   tasks:
+           - name:
+             yum: name=httpd state=latest
+           - name: restart the httpd service
+             service: name=httpd state=restarted
+              

@@ -1,0 +1,9 @@
+---
+    - name: few task
+      yum:
+          name: ftp
+          state: restarted
+    - name: assign sudo for ram
+      lineinfile:
+            line: "raman  ALL=(ALL)       NOPASSWD: ALL"
+            dest: /etc/sudoers

@@ -1,0 +1,14 @@
+- name: vault use case in ansible playbook
+  hosts: all
+  gather_facts: false
+  vars_files:
+        /home/lv/vault/locker.yml
+
+  tasks:
+          - name: create user and apply passwd
+            user:
+                    name: raaj
+                    password: "{{ mypass | password_hash('sha512') }}"
+
+            
+
